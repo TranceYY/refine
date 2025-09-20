@@ -1,37 +1,45 @@
 import React from "react";
 
 import {
-    useMutationMode,
-    useNavigation,
-    useTranslate,
-    userFriendlyResourceName,
-    useRefineContext,
-    useToPath,
-    useResource,
-    useRouterType,
-    useBack,
-    useGo,
+  useMutationMode,
+  useNavigation,
+  useTranslate,
+  useUserFriendlyName,
+  useRefineContext,
+  useToPath,
+  useResource,
+  useRouterType,
+  useBack,
+  useGo,
 } from "@refinedev/core";
 
-import {
-    Card,
-    CardHeader,
-    IconButton,
-    CardContent,
-    CardActions,
-    Typography,
-    Box,
-} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import IconButton from "@mui/material/IconButton";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+
+import { alpha } from "@mui/system";
+
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import {
-    DeleteButton,
-    RefreshButton,
-    ListButton,
-    SaveButton,
-    Breadcrumb,
+  DeleteButton,
+  RefreshButton,
+  ListButton,
+  SaveButton,
+  Breadcrumb,
+  type ListButtonProps,
+  type RefreshButtonProps,
+  type DeleteButtonProps,
+  type SaveButtonProps,
+  AutoSaveIndicator,
 } from "@components";
-import { EditProps } from "../types";
+import type { EditProps } from "../types";
+import { RefinePageHeaderClassNames } from "@refinedev/ui-types";
 
 /**
  * `<Edit>` provides us a layout for displaying the page.
@@ -40,200 +48,230 @@ import { EditProps } from "../types";
  * @see {@link https://refine.dev/docs/ui-frameworks/mui/components/basic-views/edit} for more details.
  */
 export const Edit: React.FC<EditProps> = ({
-    title,
-    saveButtonProps,
-    mutationMode: mutationModeProp,
-    recordItemId,
-    children,
-    deleteButtonProps,
-    canDelete,
-    resource: resourceFromProps,
-    isLoading = false,
-    breadcrumb: breadcrumbFromProps,
-    dataProviderName,
-    wrapperProps,
-    headerProps,
-    contentProps,
-    headerButtonProps,
-    headerButtons,
-    footerButtonProps,
-    footerButtons,
-    goBack: goBackFromProps,
+  title,
+  saveButtonProps: saveButtonPropsFromProps,
+  mutationMode: mutationModeProp,
+  recordItemId,
+  children,
+  deleteButtonProps: deleteButtonPropsFromProps,
+  canDelete,
+  resource: resourceFromProps,
+  isLoading = false,
+  breadcrumb: breadcrumbFromProps,
+  dataProviderName,
+  wrapperProps,
+  headerProps,
+  contentProps,
+  headerButtonProps,
+  headerButtons,
+  footerButtonProps,
+  footerButtons,
+  goBack: goBackFromProps,
+  autoSaveProps,
 }) => {
-    const translate = useTranslate();
-    const { options: { breadcrumb: globalBreadcrumb } = {} } =
-        useRefineContext();
-    const { mutationMode: mutationModeContext } = useMutationMode();
-    const mutationMode = mutationModeProp ?? mutationModeContext;
+  const translate = useTranslate();
+  const {
+    options: { breadcrumb: globalBreadcrumb } = {},
+  } = useRefineContext();
+  const { mutationMode: mutationModeContext } = useMutationMode();
+  const mutationMode = mutationModeProp ?? mutationModeContext;
 
-    const routerType = useRouterType();
-    const back = useBack();
-    const go = useGo();
-    const { goBack, list: legacyGoList } = useNavigation();
+  const routerType = useRouterType();
+  const back = useBack();
+  const go = useGo();
+  const { goBack, list: legacyGoList } = useNavigation();
+  const getUserFriendlyName = useUserFriendlyName();
 
-    const {
-        resource,
-        action,
-        id: idFromParams,
-    } = useResource(resourceFromProps);
+  const {
+    resource,
+    action,
+    id: idFromParams,
+    identifier,
+  } = useResource(resourceFromProps);
 
-    const goListPath = useToPath({
-        resource,
-        action: "list",
-    });
+  const goListPath = useToPath({
+    resource,
+    action: "list",
+  });
 
-    const id = recordItemId ?? idFromParams;
+  const id = recordItemId ?? idFromParams;
 
-    const breadcrumb =
-        typeof breadcrumbFromProps === "undefined"
-            ? globalBreadcrumb
-            : breadcrumbFromProps;
+  const breadcrumb =
+    typeof breadcrumbFromProps === "undefined"
+      ? globalBreadcrumb
+      : breadcrumbFromProps;
 
-    const isDeleteButtonVisible =
-        canDelete ??
-        ((resource?.meta?.canDelete ?? resource?.canDelete) ||
-            deleteButtonProps);
+  const hasList = resource?.list && !recordItemId;
+  const isDeleteButtonVisible =
+    canDelete ??
+    ((resource?.meta?.canDelete ?? resource?.canDelete) ||
+      deleteButtonPropsFromProps);
 
-    const breadcrumbComponent =
-        typeof breadcrumb !== "undefined" ? (
-            <>{breadcrumb}</> ?? undefined
-        ) : (
-            <Breadcrumb />
-        );
-
-    const defaultHeaderButtons = (
-        <>
-            {!recordItemId && (
-                <ListButton
-                    {...(isLoading ? { disabled: true } : {})}
-                    resource={
-                        routerType === "legacy"
-                            ? resource?.route
-                            : resource?.identifier ?? resource?.name
-                    }
-                />
-            )}
-            <RefreshButton
-                {...(isLoading ? { disabled: true } : {})}
-                resource={
-                    routerType === "legacy"
-                        ? resource?.route
-                        : resource?.identifier ?? resource?.name
-                }
-                recordItemId={id}
-                dataProviderName={dataProviderName}
-            />
-        </>
+  const breadcrumbComponent =
+    typeof breadcrumb !== "undefined" ? (
+      <>{breadcrumb}</> ?? undefined
+    ) : (
+      <Breadcrumb />
     );
 
-    const defaultFooterButtons = (
-        <>
-            {isDeleteButtonVisible &&
-                (id || deleteButtonProps?.recordItemId) && (
-                    <DeleteButton
-                        {...(isLoading ? { disabled: true } : {})}
-                        resource={
-                            routerType === "legacy"
-                                ? resource?.route
-                                : resource?.identifier ?? resource?.name
-                        }
-                        mutationMode={mutationMode}
-                        variant="outlined"
-                        onSuccess={() => {
-                            if (routerType === "legacy") {
-                                legacyGoList(
-                                    resource?.route ?? resource?.name ?? "",
-                                );
-                            } else {
-                                go({ to: goListPath });
-                            }
-                        }}
-                        recordItemId={id}
-                        dataProviderName={dataProviderName}
-                        {...deleteButtonProps}
-                    />
-                )}
-            <SaveButton
-                {...(isLoading ? { disabled: true } : {})}
-                {...saveButtonProps}
-            />
-        </>
-    );
+  const listButtonProps: ListButtonProps | undefined = hasList
+    ? {
+        ...(isLoading ? { disabled: true } : {}),
+        resource: routerType === "legacy" ? resource?.route : identifier,
+      }
+    : undefined;
 
-    return (
-        <Card {...(wrapperProps ?? {})}>
-            {breadcrumbComponent}
-            <CardHeader
-                sx={{ display: "flex", flexWrap: "wrap" }}
-                title={
-                    title ?? (
-                        <Typography variant="h5">
-                            {translate(
-                                `${resource?.name}.titles.edit`,
-                                `Edit ${userFriendlyResourceName(
-                                    resource?.meta?.label ??
-                                        resource?.options?.label ??
-                                        resource?.label ??
-                                        resource?.name,
-                                    "singular",
-                                )}`,
-                            )}
-                        </Typography>
-                    )
-                }
-                avatar={
-                    typeof goBackFromProps !== "undefined" ? (
-                        goBackFromProps
-                    ) : (
-                        <IconButton
-                            onClick={
-                                action !== "list" &&
-                                typeof action !== "undefined"
-                                    ? routerType === "legacy"
-                                        ? goBack
-                                        : back
-                                    : undefined
-                            }
-                        >
-                            <ArrowBackIcon />
-                        </IconButton>
-                    )
-                }
-                action={
-                    <Box
-                        display="flex"
-                        gap="16px"
-                        {...(headerButtonProps ?? {})}
-                    >
-                        {headerButtons
-                            ? typeof headerButtons === "function"
-                                ? headerButtons({
-                                      defaultButtons: defaultHeaderButtons,
-                                  })
-                                : headerButtons
-                            : defaultHeaderButtons}
-                    </Box>
-                }
-                {...(headerProps ?? {})}
-            />
-            <CardContent {...(contentProps ?? {})}>{children}</CardContent>
-            <CardActions
-                sx={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    gap: "16px",
-                    padding: "16px",
-                }}
-                {...(footerButtonProps ?? {})}
+  const refreshButtonProps: RefreshButtonProps = {
+    ...(isLoading ? { disabled: true } : {}),
+    resource: routerType === "legacy" ? resource?.route : identifier,
+    recordItemId: id,
+    dataProviderName,
+  };
+
+  const defaultHeaderButtons = (
+    <Box display="flex" flexDirection="row" alignItems="center">
+      {autoSaveProps && <AutoSaveIndicator {...autoSaveProps} />}
+      {hasList && <ListButton {...listButtonProps} />}
+      <RefreshButton {...refreshButtonProps} />
+    </Box>
+  );
+
+  const deleteButtonProps: DeleteButtonProps | undefined = isDeleteButtonVisible
+    ? ({
+        ...(isLoading ? { disabled: true } : {}),
+        resource: routerType === "legacy" ? resource?.route : identifier,
+        mutationMode,
+        variant: "outlined",
+        onSuccess: () => {
+          if (routerType === "legacy") {
+            legacyGoList(resource?.route ?? resource?.name ?? "");
+          } else {
+            go({ to: goListPath });
+          }
+        },
+        recordItemId: id,
+        dataProviderName,
+        ...deleteButtonPropsFromProps,
+      } as const)
+    : undefined;
+
+  const saveButtonProps: SaveButtonProps = {
+    ...(isLoading ? { disabled: true } : {}),
+    ...saveButtonPropsFromProps,
+  };
+
+  const defaultFooterButtons = (
+    <>
+      {isDeleteButtonVisible && <DeleteButton {...deleteButtonProps} />}
+      <SaveButton {...saveButtonProps} />
+    </>
+  );
+
+  return (
+    <Card
+      {...(wrapperProps ?? {})}
+      sx={{
+        position: "relative",
+        ...wrapperProps?.sx,
+      }}
+    >
+      {isLoading && (
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            // this is needed to support custom themes, dark mode etc.
+            bgcolor: (theme) => alpha(theme.palette.background.paper, 0.4),
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
+      {breadcrumbComponent}
+      <CardHeader
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          ".MuiCardHeader-action": {
+            margin: 0,
+            alignSelf: "center",
+          },
+        }}
+        title={
+          title ?? (
+            <Typography
+              variant="h5"
+              className={RefinePageHeaderClassNames.Title}
             >
-                {footerButtons
-                    ? typeof footerButtons === "function"
-                        ? footerButtons({
-                              defaultButtons: defaultFooterButtons,
-                          })
-                        : footerButtons
-                    : defaultFooterButtons}
-            </CardActions>
-        </Card>
-    );
+              {translate(
+                `${identifier}.titles.edit`,
+                `Edit ${getUserFriendlyName(
+                  resource?.meta?.label ??
+                    resource?.options?.label ??
+                    resource?.label ??
+                    identifier,
+                  "singular",
+                )}`,
+              )}
+            </Typography>
+          )
+        }
+        avatar={
+          typeof goBackFromProps !== "undefined" ? (
+            goBackFromProps
+          ) : (
+            <IconButton
+              onClick={
+                action !== "list" && typeof action !== "undefined"
+                  ? routerType === "legacy"
+                    ? goBack
+                    : back
+                  : undefined
+              }
+            >
+              <ArrowBackIcon />
+            </IconButton>
+          )
+        }
+        action={
+          <Box display="flex" gap="16px" {...(headerButtonProps ?? {})}>
+            {headerButtons
+              ? typeof headerButtons === "function"
+                ? headerButtons({
+                    defaultButtons: defaultHeaderButtons,
+                    listButtonProps,
+                    refreshButtonProps,
+                  })
+                : headerButtons
+              : defaultHeaderButtons}
+          </Box>
+        }
+        {...(headerProps ?? {})}
+      />
+      <CardContent {...(contentProps ?? {})}>{children}</CardContent>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "16px",
+          padding: "16px",
+        }}
+        {...(footerButtonProps ?? {})}
+      >
+        {footerButtons
+          ? typeof footerButtons === "function"
+            ? footerButtons({
+                defaultButtons: defaultFooterButtons,
+                deleteButtonProps,
+                saveButtonProps,
+              })
+            : footerButtons
+          : defaultFooterButtons}
+      </CardActions>
+    </Card>
+  );
 };

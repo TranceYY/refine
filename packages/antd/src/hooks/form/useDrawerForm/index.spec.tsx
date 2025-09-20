@@ -5,230 +5,295 @@ import { act, MockJSONServer, TestWrapper } from "@test";
 import { useDrawerForm } from "./";
 
 describe("useDrawerForm Hook", () => {
-    it("should return correct initial value of 'open'", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "create",
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+  it("should return correct initial value of 'open'", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "create",
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
 
-        expect(result.current.drawerProps.open).toBe(false);
+    expect(result.current.drawerProps.open).toBe(false);
+  });
+
+  it("'open' initial value should be set with 'defaultVisible'", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "create",
+          defaultVisible: true,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
+
+    expect(result.current.drawerProps.open).toBe(true);
+  });
+
+  it("'open' value should be false when 'onCancel' is called", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "edit",
+          defaultVisible: true,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
+
+    await act(async () => {
+      result.current.drawerProps.onClose?.({} as any);
     });
 
-    it("'open' initial value should be set with 'defaultVisible'", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "create",
-                    defaultVisible: true,
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    expect(result.current.drawerProps.open).toBe(false);
+  });
 
-        expect(result.current.drawerProps.open).toBe(true);
+  it("'open' value should be true when 'show' is called", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          id: 1,
+          action: "edit",
+          defaultVisible: false,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
+
+    await act(async () => {
+      result.current.show();
     });
 
-    it("'open' value should be false when 'onCancel' is called", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "edit",
-                    defaultVisible: true,
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    await act(async () => expect(result.current.drawerProps.open).toBe(true));
+  });
 
-        await act(async () => {
-            result.current.drawerProps.onClose?.({} as any);
-        });
+  it("'open' value should be false when 'show' is called without id", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "edit",
+          defaultVisible: false,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
 
-        expect(result.current.drawerProps.open).toBe(false);
+    await act(async () => {
+      result.current.show();
     });
 
-    it("'open' value should be true when 'show' is called", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    id: 1,
-                    action: "edit",
-                    defaultVisible: false,
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    await act(async () => expect(result.current.drawerProps.open).toBe(false));
+  });
 
-        await act(async () => {
-            result.current.show();
-        });
+  it("'id' should be updated when 'show' is called with 'id'", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "edit",
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
 
-        await act(async () =>
-            expect(result.current.drawerProps.open).toBe(true),
-        );
+    const id = "5";
+
+    await act(async () => {
+      result.current.show(id);
     });
 
-    it("'open' value should be false when 'show' is called without id", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "edit",
-                    defaultVisible: false,
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    expect(result.current.id).toBe(id);
+  });
 
-        await act(async () => {
-            result.current.show();
-        });
+  it("when 'autoSubmitClose' is true, the modal should be closed when 'submit' is called", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "edit",
+          id: "1",
+          resource: "posts",
+          autoSubmitClose: true,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
 
-        await act(async () =>
-            expect(result.current.drawerProps.open).toBe(false),
-        );
+    await act(async () => {
+      result.current.show();
+      result.current.formProps.onFinish?.({});
     });
 
-    it("'id' should be updated when 'show' is called with 'id'", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "edit",
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    await waitFor(() => expect(result.current.drawerProps.open).toBe(false));
+  });
 
-        const id = "5";
+  it("when 'autoSubmitClose' is false, 'close' should not be called when 'submit' is called", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          id: 1,
+          action: "edit",
+          resource: "posts",
+          autoSubmitClose: false,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
 
-        await act(async () => {
-            result.current.show(id);
-        });
-
-        expect(result.current.id).toBe(id);
+    await act(async () => {
+      result.current.show();
+    });
+    await act(async () => {
+      result.current.saveButtonProps.onClick?.({} as any);
     });
 
-    it("when 'autoSubmitClose' is true, the modal should be closed when 'submit' is called", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "edit",
-                    id: "1",
-                    resource: "posts",
-                    autoSubmitClose: true,
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    await waitFor(() => result.current.mutation.isSuccess);
+    await waitFor(() => expect(result.current.drawerProps.open).toBe(true));
+  });
 
-        await act(async () => {
-            result.current.show();
-            result.current.saveButtonProps.onClick?.({} as any);
-        });
+  it("autoResetForm is true, 'reset' should be called when the form is submitted", async () => {
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          resource: "posts",
+          action: "edit",
+          autoResetForm: true,
+        }),
+      {
+        wrapper: TestWrapper({}),
+      },
+    );
 
-        expect(result.current.drawerProps.open).toBe(false);
+    await act(async () => {
+      result.current.show();
+      result.current.formProps.form?.setFieldsValue({
+        test: "test",
+        foo: "bar",
+      });
+      result.current.saveButtonProps.onClick?.({} as any);
     });
 
-    it("when 'autoSubmitClose' is false, 'close' should not be called when 'submit' is called", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    id: 1,
-                    action: "edit",
-                    resource: "posts",
-                    autoSubmitClose: false,
-                }),
-            {
-                wrapper: TestWrapper({}),
-            },
-        );
+    await waitFor(() => result.current.mutation.isSuccess);
 
-        await act(async () => {
-            result.current.show();
-        });
-        await act(async () => {
-            result.current.saveButtonProps.onClick?.({} as any);
-        });
+    expect(result.current.formProps.form?.getFieldsValue()).toStrictEqual({});
+  });
 
-        await waitFor(() => result.current.mutationResult.isSuccess);
-        await waitFor(() => expect(result.current.drawerProps.open).toBe(true));
+  it("when mutationMode is 'pessimistic', the form should be closed when the mutation is successful", async () => {
+    const updateMock = jest.fn(
+      () => new Promise((resolve) => setTimeout(resolve, 1000)),
+    );
+
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          action: "edit",
+          resource: "posts",
+          id: 1,
+          mutationMode: "pessimistic",
+        }),
+      {
+        wrapper: TestWrapper({
+          dataProvider: {
+            ...MockJSONServer,
+            update: updateMock,
+          },
+        }),
+      },
+    );
+
+    await act(async () => {
+      result.current.show();
+      result.current.formProps.onFinish?.({});
     });
 
-    it("autoResetForm is true, 'reset' should be called when the form is submitted", async () => {
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    resource: "posts",
-                    action: "edit",
-                    autoResetForm: true,
-                }),
-            {
-                wrapper: TestWrapper({}),
+    expect(result.current.drawerProps.open).toBe(true);
+
+    await waitFor(() => expect(result.current.drawerProps.open).toBe(false));
+
+    expect(updateMock).toBeCalledTimes(1);
+    expect(result.current.drawerProps.open).toBe(false);
+  });
+
+  it.each(["optimistic", "undoable"] as const)(
+    "when mutationMode is '%s', the form should be closed when the mutation is successful",
+    async (mutationMode) => {
+      const updateMock = jest.fn(
+        () => new Promise((resolve) => setTimeout(resolve, 1000)),
+      );
+
+      const { result } = renderHook(
+        () =>
+          useDrawerForm({
+            action: "edit",
+            resource: "posts",
+            id: 1,
+            mutationMode,
+          }),
+        {
+          wrapper: TestWrapper({
+            dataProvider: {
+              ...MockJSONServer,
+              update: updateMock,
             },
-        );
+          }),
+        },
+      );
 
-        await act(async () => {
-            result.current.show();
-            result.current.formProps.form?.setFieldsValue({
-                test: "test",
-                foo: "bar",
-            });
-            result.current.saveButtonProps.onClick?.({} as any);
-        });
+      await act(async () => {
+        result.current.show();
+        result.current.formProps.onFinish?.({});
+      });
 
-        await waitFor(() => result.current.mutationResult.isSuccess);
+      expect(result.current.drawerProps.open).toBe(false);
+    },
+  );
 
-        expect(result.current.formProps.form?.getFieldsValue()).toStrictEqual(
-            {},
-        );
+  it("should `meta[syncWithLocationKey]` overrided by default", async () => {
+    const mockGetOne = jest.fn();
+    const mockUpdate = jest.fn();
+
+    const { result } = renderHook(
+      () =>
+        useDrawerForm({
+          syncWithLocation: true,
+          id: 5,
+          action: "edit",
+          resource: "posts",
+        }),
+      {
+        wrapper: TestWrapper({
+          dataProvider: {
+            ...MockJSONServer,
+            getOne: mockGetOne,
+            update: mockUpdate,
+          },
+        }),
+      },
+    );
+
+    await act(async () => {
+      result.current.show();
     });
 
-    it("when mutationMode is 'pessimistic', the form should be closed when the mutation is successful", async () => {
-        jest.useFakeTimers();
-        const updateMock = jest.fn(
-            () => new Promise((resolve) => setTimeout(resolve, 1000)),
-        );
+    await waitFor(() => expect(result.current.drawerProps.open).toBe(true));
 
-        const { result } = renderHook(
-            () =>
-                useDrawerForm({
-                    action: "edit",
-                    resource: "posts",
-                    id: 1,
-                    mutationMode: "pessimistic",
-                }),
-            {
-                wrapper: TestWrapper({
-                    dataProvider: {
-                        ...MockJSONServer,
-                        update: updateMock,
-                    },
-                }),
-            },
-        );
-
-        await act(async () => {
-            result.current.show();
-            result.current.saveButtonProps.onClick?.({} as any);
-            jest.runAllTimers();
-        });
-
-        expect(result.current.drawerProps.open).toBe(true);
-
-        await waitFor(() =>
-            expect(result.current.drawerProps.open).toBe(false),
-        );
-
-        expect(updateMock).toBeCalledTimes(1);
-        expect(result.current.drawerProps.open).toBe(false);
+    await waitFor(() => {
+      expect(mockGetOne).toBeCalledTimes(1);
+      expect(mockGetOne).toBeCalledWith(
+        expect.objectContaining({
+          meta: expect.objectContaining({
+            "drawer-posts-edit": undefined,
+          }),
+        }),
+      );
     });
+  });
 });

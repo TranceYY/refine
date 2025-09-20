@@ -12,12 +12,8 @@ exports[`MantineInferencer should match the snapshot 1`] = `
         <div
           class="mantine-Stack-root mantine-zyu68o"
         >
-          <div
-            aria-label="breadcrumb"
-            class="mantine-Breadcrumbs-root mantine-16ttirm"
-          />
           <h3
-            class="mantine-Text-root mantine-Title-root mantine-6hw97m"
+            class="mantine-Text-root mantine-Title-root refine-pageHeader-title mantine-6hw97m"
           />
         </div>
         <div
@@ -363,6 +359,7 @@ exports[`MantineInferencer should match the snapshot 1`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer"
     style="position: sticky; bottom: 24px; padding-top: 24px; left: 0px; right: 0px; width: 100%; z-index: 10; display: flex; justify-content: center; transition: all 0.2s ease; opacity: 1; transform: translateY(0);"
   >
     <div
@@ -440,6 +437,7 @@ exports[`MantineInferencer should match the snapshot 1`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer-modal"
     style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 9999; background-color: rgba(0, 0, 0, 0.5); transition: all 0.2s ease; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center;"
   >
     <div
@@ -522,146 +520,6 @@ exports[`MantineInferencer should match the snapshot 1`] = `
                 style="color: rgb(206, 145, 120);"
               >
                 "react"
-              </span>
-              <span
-                class="token punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                ;
-              </span>
-              <span
-                class="token plain"
-              />
-            </div>
-            <div
-              class="token-line"
-              style="color: rgb(156, 220, 254);"
-            >
-              <span
-                class="token plain"
-              />
-              <span
-                class="token keyword"
-                style="color: rgb(86, 156, 214);"
-              >
-                import
-              </span>
-              <span
-                class="token plain"
-              >
-                 
-              </span>
-              <span
-                class="token imports punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                {
-              </span>
-              <span
-                class="token imports"
-              />
-            </div>
-            <div
-              class="token-line"
-              style="color: rgb(156, 220, 254);"
-            >
-              <span
-                class="token imports"
-              >
-                    
-              </span>
-              <span
-                class="token imports maybe-class-name"
-              >
-                IResourceComponentsProps
-              </span>
-              <span
-                class="token imports punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                ,
-              </span>
-              <span
-                class="token imports"
-              />
-            </div>
-            <div
-              class="token-line"
-              style="color: rgb(156, 220, 254);"
-            >
-              <span
-                class="token imports"
-              >
-                    
-              </span>
-              <span
-                class="token imports maybe-class-name"
-              >
-                GetManyResponse
-              </span>
-              <span
-                class="token imports punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                ,
-              </span>
-              <span
-                class="token imports"
-              />
-            </div>
-            <div
-              class="token-line"
-              style="color: rgb(156, 220, 254);"
-            >
-              <span
-                class="token imports"
-              >
-                    useMany
-              </span>
-              <span
-                class="token imports punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                ,
-              </span>
-              <span
-                class="token imports"
-              />
-            </div>
-            <div
-              class="token-line"
-              style="color: rgb(156, 220, 254);"
-            >
-              <span
-                class="token imports"
-              />
-              <span
-                class="token imports punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                }
-              </span>
-              <span
-                class="token plain"
-              >
-                 
-              </span>
-              <span
-                class="token keyword"
-                style="color: rgb(86, 156, 214);"
-              >
-                from
-              </span>
-              <span
-                class="token plain"
-              >
-                 
-              </span>
-              <span
-                class="token string"
-                style="color: rgb(206, 145, 120);"
-              >
-                "@refinedev/core"
               </span>
               <span
                 class="token punctuation"
@@ -1211,6 +1069,89 @@ exports[`MantineInferencer should match the snapshot 1`] = `
             >
               <span
                 class="token plain"
+              />
+              <span
+                class="token keyword"
+                style="color: rgb(86, 156, 214);"
+              >
+                import
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token imports punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                {
+              </span>
+              <span
+                class="token imports"
+              >
+                 
+              </span>
+              <span
+                class="token imports maybe-class-name"
+              >
+                GetManyResponse
+              </span>
+              <span
+                class="token imports punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                ,
+              </span>
+              <span
+                class="token imports"
+              >
+                 useMany 
+              </span>
+              <span
+                class="token imports punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                }
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token keyword"
+                style="color: rgb(86, 156, 214);"
+              >
+                from
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token string"
+                style="color: rgb(206, 145, 120);"
+              >
+                "@refinedev/core"
+              </span>
+              <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                ;
+              </span>
+              <span
+                class="token plain"
+              />
+            </div>
+            <div
+              class="token-line"
+              style="color: rgb(156, 220, 254);"
+            >
+              <span
+                class="token plain"
                 style="display: inline-block;"
               >
                 
@@ -1247,54 +1188,10 @@ exports[`MantineInferencer should match the snapshot 1`] = `
                  
               </span>
               <span
-                class="token maybe-class-name"
+                class="token function-variable function"
+                style="color: rgb(220, 220, 170);"
               >
                 PostList
-              </span>
-              <span
-                class="token operator"
-                style="color: rgb(212, 212, 212);"
-              >
-                :
-              </span>
-              <span
-                class="token plain"
-              >
-                 
-              </span>
-              <span
-                class="token maybe-class-name"
-              >
-                React
-              </span>
-              <span
-                class="token punctuation"
-                style="color: rgb(212, 212, 212);"
-              >
-                .
-              </span>
-              <span
-                class="token constant"
-                style="color: rgb(100, 102, 149);"
-              >
-                FC
-              </span>
-              <span
-                class="token operator"
-                style="color: rgb(212, 212, 212);"
-              >
-                &lt;
-              </span>
-              <span
-                class="token maybe-class-name"
-              >
-                IResourceComponentsProps
-              </span>
-              <span
-                class="token operator"
-                style="color: rgb(212, 212, 212);"
-              >
-                &gt;
               </span>
               <span
                 class="token plain"
@@ -3134,7 +3031,7 @@ exports[`MantineInferencer should match the snapshot 1`] = `
                 class="token operator"
                 style="color: rgb(212, 212, 212);"
               >
-                ===
+                ==
               </span>
               <span
                 class="token plain"
@@ -3845,7 +3742,7 @@ exports[`MantineInferencer should match the snapshot 1`] = `
                 class="token operator"
                 style="color: rgb(212, 212, 212);"
               >
-                ===
+                ==
               </span>
               <span
                 class="token plain"
@@ -11955,10 +11852,6 @@ exports[`MantineInferencer should match the snapshot 2`] = `
           class="mantine-Stack-root mantine-zyu68o"
         >
           <div
-            aria-label="breadcrumb"
-            class="mantine-Breadcrumbs-root mantine-16ttirm"
-          />
-          <div
             class="mantine-Group-root mantine-1g4q40w"
           >
             <button
@@ -11966,7 +11859,7 @@ exports[`MantineInferencer should match the snapshot 2`] = `
               type="button"
             >
               <svg
-                class="icon icon-tabler icon-tabler-arrow-left"
+                class="tabler-icon tabler-icon-arrow-left "
                 fill="none"
                 height="24"
                 stroke="currentColor"
@@ -11978,32 +11871,18 @@ exports[`MantineInferencer should match the snapshot 2`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
+                  d="M5 12l14 0"
                 />
-                <line
-                  x1="5"
-                  x2="19"
-                  y1="12"
-                  y2="12"
+                <path
+                  d="M5 12l6 6"
                 />
-                <line
-                  x1="5"
-                  x2="11"
-                  y1="12"
-                  y2="18"
-                />
-                <line
-                  x1="5"
-                  x2="11"
-                  y1="12"
-                  y2="6"
+                <path
+                  d="M5 12l6 -6"
                 />
               </svg>
             </button>
             <h3
-              class="mantine-Text-root mantine-Title-root mantine-6hw97m"
+              class="mantine-Text-root mantine-Title-root refine-pageHeader-title mantine-6hw97m"
             >
               Create 
             </h3>
@@ -12505,7 +12384,7 @@ exports[`MantineInferencer should match the snapshot 2`] = `
         class="mantine-Group-root mantine-n0y6vz"
       >
         <button
-          class="mantine-UnstyledButton-root mantine-Button-root mantine-4xmesm"
+          class="mantine-UnstyledButton-root mantine-Button-root refine-save-button mantine-4xmesm"
           data-button="true"
           type="button"
         >
@@ -12516,7 +12395,7 @@ exports[`MantineInferencer should match the snapshot 2`] = `
               class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"
             >
               <svg
-                class="icon icon-tabler icon-tabler-device-floppy"
+                class="tabler-icon tabler-icon-device-floppy "
                 fill="none"
                 height="18"
                 stroke="currentColor"
@@ -12528,20 +12407,13 @@ exports[`MantineInferencer should match the snapshot 2`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
-                />
-                <path
                   d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"
                 />
-                <circle
-                  cx="12"
-                  cy="14"
-                  r="2"
+                <path
+                  d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
                 />
-                <polyline
-                  points="14 4 14 8 8 8 8 4"
+                <path
+                  d="M14 4l0 4l-6 0l0 -4"
                 />
               </svg>
             </span>
@@ -12556,6 +12428,7 @@ exports[`MantineInferencer should match the snapshot 2`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer"
     style="position: sticky; bottom: 24px; padding-top: 24px; left: 0px; right: 0px; width: 100%; z-index: 10; display: flex; justify-content: center; transition: all 0.2s ease; opacity: 1; transform: translateY(0);"
   >
     <div
@@ -12633,6 +12506,7 @@ exports[`MantineInferencer should match the snapshot 2`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer-modal"
     style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 9999; background-color: rgba(0, 0, 0, 0.5); transition: all 0.2s ease; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center;"
   >
     <div
@@ -17446,10 +17320,6 @@ exports[`MantineInferencer should match the snapshot 3`] = `
           class="mantine-Stack-root mantine-zyu68o"
         >
           <div
-            aria-label="breadcrumb"
-            class="mantine-Breadcrumbs-root mantine-16ttirm"
-          />
-          <div
             class="mantine-Group-root mantine-1g4q40w"
           >
             <button
@@ -17457,7 +17327,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
               type="button"
             >
               <svg
-                class="icon icon-tabler icon-tabler-arrow-left"
+                class="tabler-icon tabler-icon-arrow-left "
                 fill="none"
                 height="24"
                 stroke="currentColor"
@@ -17469,32 +17339,18 @@ exports[`MantineInferencer should match the snapshot 3`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
+                  d="M5 12l14 0"
                 />
-                <line
-                  x1="5"
-                  x2="19"
-                  y1="12"
-                  y2="12"
+                <path
+                  d="M5 12l6 6"
                 />
-                <line
-                  x1="5"
-                  x2="11"
-                  y1="12"
-                  y2="18"
-                />
-                <line
-                  x1="5"
-                  x2="11"
-                  y1="12"
-                  y2="6"
+                <path
+                  d="M5 12l6 -6"
                 />
               </svg>
             </button>
             <h3
-              class="mantine-Text-root mantine-Title-root mantine-6hw97m"
+              class="mantine-Text-root mantine-Title-root refine-pageHeader-title mantine-6hw97m"
             >
               Edit 
             </h3>
@@ -17503,85 +17359,8 @@ exports[`MantineInferencer should match the snapshot 3`] = `
         <div
           class="mantine-Group-root mantine-1g4q40w"
         >
-          <a
-            class="mantine-Text-root mantine-Anchor-root mantine-1ut1du9"
-            href="/custom-page"
-          >
-            <button
-              class="mantine-UnstyledButton-root mantine-Button-root mantine-1gzbrws"
-              data-button="true"
-              title=""
-              type="button"
-            >
-              <div
-                class="mantine-3xbgk5 mantine-Button-inner"
-              >
-                <span
-                  class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"
-                >
-                  <svg
-                    class="icon icon-tabler icon-tabler-list"
-                    fill="none"
-                    height="18"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    width="18"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0 0h24v24H0z"
-                      fill="none"
-                      stroke="none"
-                    />
-                    <line
-                      x1="9"
-                      x2="20"
-                      y1="6"
-                      y2="6"
-                    />
-                    <line
-                      x1="9"
-                      x2="20"
-                      y1="12"
-                      y2="12"
-                    />
-                    <line
-                      x1="9"
-                      x2="20"
-                      y1="18"
-                      y2="18"
-                    />
-                    <line
-                      x1="5"
-                      x2="5"
-                      y1="6"
-                      y2="6.01"
-                    />
-                    <line
-                      x1="5"
-                      x2="5"
-                      y1="12"
-                      y2="12.01"
-                    />
-                    <line
-                      x1="5"
-                      x2="5"
-                      y1="18"
-                      y2="18.01"
-                    />
-                  </svg>
-                </span>
-                <span
-                  class="mantine-qo1k2 mantine-Button-label"
-                />
-              </div>
-            </button>
-          </a>
           <button
-            class="mantine-UnstyledButton-root mantine-Button-root mantine-1gzbrws"
+            class="mantine-UnstyledButton-root mantine-Button-root refine-refresh-button mantine-1gzbrws"
             data-button="true"
             type="button"
           >
@@ -17592,7 +17371,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
                 class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"
               >
                 <svg
-                  class="icon icon-tabler icon-tabler-refresh"
+                  class="tabler-icon tabler-icon-refresh "
                   fill="none"
                   height="18"
                   stroke="currentColor"
@@ -17603,11 +17382,6 @@ exports[`MantineInferencer should match the snapshot 3`] = `
                   width="18"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                    stroke="none"
-                  />
                   <path
                     d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"
                   />
@@ -17980,7 +17754,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
               class="mantine-Input-input mantine-TextInput-input mantine-1g14e8k"
               id="mantine-rq"
               type="text"
-              value="2022-04-02T04:25:44.933Z"
+              value="2022-04-02T08:25:44.933Z"
             />
           </div>
         </div>
@@ -18187,7 +17961,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
         class="mantine-Group-root mantine-n0y6vz"
       >
         <button
-          class="mantine-UnstyledButton-root mantine-Button-root mantine-4xmesm"
+          class="mantine-UnstyledButton-root mantine-Button-root refine-save-button mantine-4xmesm"
           data-button="true"
           type="button"
         >
@@ -18198,7 +17972,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
               class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"
             >
               <svg
-                class="icon icon-tabler icon-tabler-device-floppy"
+                class="tabler-icon tabler-icon-device-floppy "
                 fill="none"
                 height="18"
                 stroke="currentColor"
@@ -18210,20 +17984,13 @@ exports[`MantineInferencer should match the snapshot 3`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
-                />
-                <path
                   d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"
                 />
-                <circle
-                  cx="12"
-                  cy="14"
-                  r="2"
+                <path
+                  d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
                 />
-                <polyline
-                  points="14 4 14 8 8 8 8 4"
+                <path
+                  d="M14 4l0 4l-6 0l0 -4"
                 />
               </svg>
             </span>
@@ -18238,6 +18005,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer"
     style="position: sticky; bottom: 24px; padding-top: 24px; left: 0px; right: 0px; width: 100%; z-index: 10; display: flex; justify-content: center; transition: all 0.2s ease; opacity: 1; transform: translateY(0);"
   >
     <div
@@ -18315,6 +18083,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer-modal"
     style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 9999; background-color: rgba(0, 0, 0, 0.5); transition: all 0.2s ease; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center;"
   >
     <div
@@ -18857,7 +18626,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
               <span
                 class="token plain"
               >
-                 queryResult 
+                 query 
               </span>
               <span
                 class="token punctuation"
@@ -19610,10 +19379,10 @@ exports[`MantineInferencer should match the snapshot 3`] = `
                  
               </span>
               <span
-                class="token number"
-                style="color: rgb(181, 206, 168);"
+                class="token string"
+                style="color: rgb(206, 145, 120);"
               >
-                11
+                "11"
               </span>
               <span
                 class="token punctuation"
@@ -19758,7 +19527,7 @@ exports[`MantineInferencer should match the snapshot 3`] = `
               <span
                 class="token plain"
               >
-                 queryResult
+                 query
               </span>
               <span
                 class="token operator"
@@ -23553,10 +23322,6 @@ exports[`MantineInferencer should match the snapshot 4`] = `
           class="mantine-Stack-root mantine-zyu68o"
         >
           <div
-            aria-label="breadcrumb"
-            class="mantine-Breadcrumbs-root mantine-16ttirm"
-          />
-          <div
             class="mantine-Group-root mantine-1g4q40w"
           >
             <button
@@ -23564,7 +23329,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               type="button"
             >
               <svg
-                class="icon icon-tabler icon-tabler-arrow-left"
+                class="tabler-icon tabler-icon-arrow-left "
                 fill="none"
                 height="24"
                 stroke="currentColor"
@@ -23576,32 +23341,18 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                  stroke="none"
+                  d="M5 12l14 0"
                 />
-                <line
-                  x1="5"
-                  x2="19"
-                  y1="12"
-                  y2="12"
+                <path
+                  d="M5 12l6 6"
                 />
-                <line
-                  x1="5"
-                  x2="11"
-                  y1="12"
-                  y2="18"
-                />
-                <line
-                  x1="5"
-                  x2="11"
-                  y1="12"
-                  y2="6"
+                <path
+                  d="M5 12l6 -6"
                 />
               </svg>
             </button>
             <h3
-              class="mantine-Text-root mantine-Title-root mantine-6hw97m"
+              class="mantine-Text-root mantine-Title-root refine-pageHeader-title mantine-6hw97m"
             >
               Show 
             </h3>
@@ -23610,85 +23361,8 @@ exports[`MantineInferencer should match the snapshot 4`] = `
         <div
           class="mantine-Group-root mantine-1g4q40w"
         >
-          <a
-            class="mantine-Text-root mantine-Anchor-root mantine-1ut1du9"
-            href="/custom-page"
-          >
-            <button
-              class="mantine-UnstyledButton-root mantine-Button-root mantine-1gzbrws"
-              data-button="true"
-              title=""
-              type="button"
-            >
-              <div
-                class="mantine-3xbgk5 mantine-Button-inner"
-              >
-                <span
-                  class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"
-                >
-                  <svg
-                    class="icon icon-tabler icon-tabler-list"
-                    fill="none"
-                    height="18"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    width="18"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0 0h24v24H0z"
-                      fill="none"
-                      stroke="none"
-                    />
-                    <line
-                      x1="9"
-                      x2="20"
-                      y1="6"
-                      y2="6"
-                    />
-                    <line
-                      x1="9"
-                      x2="20"
-                      y1="12"
-                      y2="12"
-                    />
-                    <line
-                      x1="9"
-                      x2="20"
-                      y1="18"
-                      y2="18"
-                    />
-                    <line
-                      x1="5"
-                      x2="5"
-                      y1="6"
-                      y2="6.01"
-                    />
-                    <line
-                      x1="5"
-                      x2="5"
-                      y1="12"
-                      y2="12.01"
-                    />
-                    <line
-                      x1="5"
-                      x2="5"
-                      y1="18"
-                      y2="18.01"
-                    />
-                  </svg>
-                </span>
-                <span
-                  class="mantine-qo1k2 mantine-Button-label"
-                />
-              </div>
-            </button>
-          </a>
           <button
-            class="mantine-UnstyledButton-root mantine-Button-root mantine-1gzbrws"
+            class="mantine-UnstyledButton-root mantine-Button-root refine-refresh-button mantine-1gzbrws"
             data-button="true"
             type="button"
           >
@@ -23699,7 +23373,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                 class="mantine-Button-icon mantine-Button-leftIcon mantine-1g4orza"
               >
                 <svg
-                  class="icon icon-tabler icon-tabler-refresh"
+                  class="tabler-icon tabler-icon-refresh "
                   fill="none"
                   height="18"
                   stroke="currentColor"
@@ -23710,11 +23384,6 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                   width="18"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M0 0h24v24H0z"
-                    fill="none"
-                    stroke="none"
-                  />
                   <path
                     d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"
                   />
@@ -23922,6 +23591,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer"
     style="position: sticky; bottom: 24px; padding-top: 24px; left: 0px; right: 0px; width: 100%; z-index: 10; display: flex; justify-content: center; transition: all 0.2s ease; opacity: 1; transform: translateY(0);"
   >
     <div
@@ -23999,6 +23669,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
     </div>
   </div>
   <div
+    class="refine-inferencer--code-viewer-modal"
     style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 9999; background-color: rgba(0, 0, 0, 0.5); transition: all 0.2s ease; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center;"
   >
     <div
@@ -24582,7 +24253,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain"
               >
-                 queryResult 
+                 query 
               </span>
               <span
                 class="token punctuation"
@@ -24685,10 +24356,10 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                  
               </span>
               <span
-                class="token number"
-                style="color: rgb(181, 206, 168);"
+                class="token string"
+                style="color: rgb(206, 145, 120);"
               >
-                21
+                "21"
               </span>
               <span
                 class="token punctuation"
@@ -24793,7 +24464,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain"
               >
-                 queryResult
+                 query
               </span>
               <span
                 class="token punctuation"
@@ -25870,7 +25541,57 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain"
               >
+                record 
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                &&
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                !
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                !
+              </span>
+              <span
+                class="token plain"
+              >
                 record
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?.
+              </span>
+              <span
+                class="token plain"
+              >
+                tags
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?.
+              </span>
+              <span
+                class="token plain"
+              >
+                length
               </span>
               <span
                 class="token punctuation"
@@ -29754,6 +29475,39 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                 class="token operator"
                 style="color: rgb(212, 212, 212);"
               >
+                &&
+              </span>
+              <span
+                class="token plain"
+              >
+                 record
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?.
+              </span>
+              <span
+                class="token plain"
+              >
+                tags
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?.
+              </span>
+              <span
+                class="token plain"
+              >
+                length 
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
                 ?
               </span>
               <span
@@ -29889,6 +29643,69 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                                     
               </span>
               <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                {
+              </span>
+              <span
+                class="token plain"
+              >
+                record
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?.
+              </span>
+              <span
+                class="token plain"
+              >
+                tags
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?.
+              </span>
+              <span
+                class="token plain"
+              >
+                length 
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                ?
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                (
+              </span>
+              <span
+                class="token plain"
+              />
+            </div>
+            <div
+              class="token-line"
+              style="color: rgb(156, 220, 254);"
+            >
+              <span
+                class="token plain"
+              >
+                                        
+              </span>
+              <span
                 class="token tag punctuation"
                 style="color: rgb(212, 212, 212);"
               >
@@ -29953,7 +29770,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain-text"
               >
-                                        
+                                            
               </span>
               <span
                 class="token punctuation"
@@ -30062,7 +29879,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain"
               >
-                                            
+                                                
               </span>
               <span
                 class="token tag punctuation"
@@ -30195,7 +30012,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain"
               >
-                                        
+                                            
               </span>
               <span
                 class="token punctuation"
@@ -30226,7 +30043,7 @@ exports[`MantineInferencer should match the snapshot 4`] = `
               <span
                 class="token plain-text"
               >
-                                    
+                                        
               </span>
               <span
                 class="token tag punctuation"
@@ -30245,6 +30062,109 @@ exports[`MantineInferencer should match the snapshot 4`] = `
                 style="color: rgb(212, 212, 212);"
               >
                 &gt;
+              </span>
+              <span
+                class="token plain"
+              />
+            </div>
+            <div
+              class="token-line"
+              style="color: rgb(156, 220, 254);"
+            >
+              <span
+                class="token plain"
+              >
+                                    
+              </span>
+              <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                )
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token operator"
+                style="color: rgb(212, 212, 212);"
+              >
+                :
+              </span>
+              <span
+                class="token plain"
+              >
+                 
+              </span>
+              <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                (
+              </span>
+              <span
+                class="token plain"
+              />
+            </div>
+            <div
+              class="token-line"
+              style="color: rgb(156, 220, 254);"
+            >
+              <span
+                class="token plain"
+              >
+                                        
+              </span>
+              <span
+                class="token tag punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                &lt;
+              </span>
+              <span
+                class="token tag punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                &gt;
+              </span>
+              <span
+                class="token tag punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                &lt;/
+              </span>
+              <span
+                class="token tag punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                &gt;
+              </span>
+              <span
+                class="token plain"
+              />
+            </div>
+            <div
+              class="token-line"
+              style="color: rgb(156, 220, 254);"
+            >
+              <span
+                class="token plain"
+              >
+                                    
+              </span>
+              <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                )
+              </span>
+              <span
+                class="token punctuation"
+                style="color: rgb(212, 212, 212);"
+              >
+                }
               </span>
               <span
                 class="token plain-text"

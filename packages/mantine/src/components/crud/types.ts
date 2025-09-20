@@ -1,47 +1,58 @@
-import {
-    CreateButtonProps,
-    DeleteButtonProps,
-    SaveButtonProps,
-} from "@components/buttons";
-import { BoxProps, CardProps, GroupProps } from "@mantine/core";
-import {
-    RefineCrudCreateProps,
-    RefineCrudEditProps,
-    RefineCrudListProps,
-    RefineCrudShowProps,
+import type {
+  CreateButtonProps,
+  DeleteButtonProps,
+  EditButtonProps,
+  ListButtonProps,
+  RefreshButtonProps,
+  SaveButtonProps,
+} from "../buttons/types";
+import type { BoxProps, CardProps, GroupProps } from "@mantine/core";
+import type {
+  RefineCrudCreateProps,
+  RefineCrudEditProps,
+  RefineCrudListProps,
+  RefineCrudShowProps,
 } from "@refinedev/ui-types";
 
 export type ListProps = RefineCrudListProps<
-    CreateButtonProps,
-    GroupProps,
-    CardProps,
-    GroupProps,
-    BoxProps
+  CreateButtonProps,
+  GroupProps,
+  CardProps,
+  GroupProps,
+  BoxProps
 >;
 
 export type ShowProps = RefineCrudShowProps<
-    GroupProps,
-    GroupProps,
-    CardProps,
-    GroupProps,
-    BoxProps
+  GroupProps,
+  GroupProps,
+  CardProps,
+  GroupProps,
+  BoxProps,
+  {},
+  EditButtonProps,
+  DeleteButtonProps,
+  RefreshButtonProps,
+  ListButtonProps
 >;
 
 export type CreateProps = RefineCrudCreateProps<
-    SaveButtonProps,
-    GroupProps,
-    GroupProps,
-    CardProps,
-    GroupProps,
-    BoxProps
+  SaveButtonProps,
+  GroupProps,
+  GroupProps,
+  CardProps,
+  GroupProps,
+  BoxProps
 >;
 
 export type EditProps = RefineCrudEditProps<
-    SaveButtonProps,
-    DeleteButtonProps,
-    GroupProps,
-    GroupProps,
-    CardProps,
-    GroupProps,
-    BoxProps
+  SaveButtonProps,
+  DeleteButtonProps,
+  GroupProps,
+  GroupProps,
+  CardProps,
+  GroupProps,
+  BoxProps,
+  {},
+  RefreshButtonProps,
+  ListButtonProps
 >;
